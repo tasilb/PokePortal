@@ -7,3 +7,5 @@ In PokePortal, you can:
 * View other trainers' Pokemon
 * Damage and destroy other trainers' Pokemon
 * Create your own new Pokemon
+
+Thanks to the Rails DeCal staff for putting the class and materials together!
