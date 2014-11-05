@@ -13,11 +13,22 @@ class PokemonsController < ApplicationController
   	@pokemon.health = @pokemon.health - 10
   	@pokemon.save
 
-  	if @pokemon.health == 0
-  	  @pokemon.destroy
-  	end
-
   	redirect_to trainer_path(id: @pokemon.trainer_id)
+  end
+
+  def heal
+    @pokemon = Pokemon.find(params[:id])
+    if @pokemon.health == 100
+      flash[:error] = "Your pokemon is already at full health!"
+    elsif @pokemon.health >= 90
+      @pokemon.health = 100
+      @pokemon.save
+    else
+      @pokemon.health = @pokemon.health + 10
+      @pokemon.save
+    end
+
+    redirect_to trainer_path(id: @pokemon.trainer_id)
   end
 
   def new
